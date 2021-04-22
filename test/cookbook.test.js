@@ -20,10 +20,14 @@ describe('Cookbook', () => {
 
   describe('Listing recipes', () => {
     test('should allow the recipes to be listed', () => {
-	//Ar
+	//Arrange
+	const myCookbook = new Cookbook();
 
+	//Act
+	const myRecipes = myCookbook.listRecipes();
 
-
+	//Assert
+	expect(myRecipes).toEqual([]);
     });
   });
 

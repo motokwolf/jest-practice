@@ -34,10 +34,15 @@ describe('CookbookCli', () => {
   describe('Retrieving a recipe', () => {
     test('should display the ingredients required to make the specified recipe', () => {
 	//Arrange
-	
+	const myCookbook = new Cookbook();
+	const myCookbookCli = new CookbookCli(myCookbook);
+	myCookbook.addRecipe('P&B Sandwich', ['bread','peanut butter','jam']);
+
 	//Act
-	
+	const message = myCookbookCli.get('P&B Sandwich')
+
 	//Assert
+	expect(message).toBe('The ingredients for P&B Sandwich are: bread,peanut butter,jam');
     });
   });
 

@@ -10,7 +10,7 @@ describe('CookbookCli', () => {
 
 	//Act
 	const message = myCookbookCli.run('add','P&B Sandwich', ['bread','peanut butter','jam']);
-	
+
 	//Assert
 	expect(message).toBe('Successfully added the following recipe: P&B Sandwich');
     });
@@ -19,10 +19,15 @@ describe('CookbookCli', () => {
   describe('Listing recipes', () => {
     test('should display the correct message listing all of the recipe names', () => {
 	//Arrange
-	
+	const myCookbook = new Cookbook();
+	const myCookbookCli = new CookbookCli(myCookbook);
+	myCookbook.addRecipe('P&B Sandwich', ['bread','peanut butter','jam']);
+
 	//Act
-	
+	const message = myCookbookCli.run('list');
+
 	//Assert
+	expect(message).toBe('You have the following recipes: P&B Sandwich');
     });
   });
 

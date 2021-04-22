@@ -33,13 +33,29 @@ describe('Cookbook', () => {
 
   describe('Retrieving a recipe', () => {
     test('should allow the ingredients for a recipe to be retrieved', () => {
+	//Arrange
+	const myCookbook = new Cookbook();
+	myCookbook.addRecipe('Cafe Latte', ['coffee', 'frothed milk']);
 
+	//Act
+	const myRecipe = myCookbook.getRecipe('Cafe Latte');
+
+	//Assert
+	expect(myRecipe).toEqual(['coffee','frothed milk']);
     });
   });
 
   describe('Deleting a recipe', () => {
     test('should allow a recipe to be deleted', () => {
+	//Arrange
+	const myCookbook = new Cookbook();
+	myCookbook.addRecipe('Cafe Latte', ['coffee', 'frothed milk']);
 
+	//Act
+	myCookbook.removeRecipe('Cafe Latte');
+
+	//Assert
+	expect(myCookbook.recipes).toEqual({});
     });
   });
 });

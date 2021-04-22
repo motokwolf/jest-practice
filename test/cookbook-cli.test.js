@@ -49,10 +49,15 @@ describe('CookbookCli', () => {
   describe('Deleting a recipe', () => {
     test('should accept the recipe name and display the correct message', () => {
 	//Arrange
-	
+	const myCookbook = new Cookbook();
+	const myCookbookCli = new CookbookCli(myCookbook);
+	myCookbook.addRecipe('P&B Sandwich', ['bread','peanut butter','jam']);
+
 	//Act
-	
+	const message = myCookbookCli.remove('P&B Sandwich');
+
 	//Assert
+	expect(message).toBe('Successfully removed the following recipe: P&B Sandwich');
     });
   });
 });
